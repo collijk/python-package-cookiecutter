@@ -19,9 +19,13 @@ jobs:
         run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           body=$(poetry show -o -n)
-          echo "body<<$EOF" >> "$GITHUB_OUTPUT"
-          echo "$body" >> "$GITHUB_OUTPUT"
-          echo "$EOF" >> "$GITHUB_OUTPUT"
+
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          {
+            echo "body<<$EOF"
+            echo "$body"
+            echo "$EOF"
+          } >> "$GITHUB_OUTPUT"
           echo "$body"
 
       - name: Format PR message
@@ -39,10 +43,13 @@ jobs:
           body="${body//'%'/'%25'}"
           body="${body//$'\n'/'%0A'}"
           body="${body//$'\r'/'%0D'}"
+
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "body<<$EOF" >> "$GITHUB_OUTPUT"
-          echo "$body" >> "$GITHUB_OUTPUT"
-          echo "$EOF" >> "$GITHUB_OUTPUT"
+          {
+            echo "body<<$EOF"
+            echo "$body"
+            echo "$EOF"
+          } >> "$GITHUB_OUTPUT"
           echo "$body"
 
       - name: Update outdated packages

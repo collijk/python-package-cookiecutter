@@ -71,6 +71,7 @@ jobs:
             echo "$body"
             echo "$EOF"
           } >> "$GITHUB_OUTPUT"
+          echo "$body"
 
       # behaviour if PR already exists: https://github.com/marketplace/actions/create-pull-request#action-behaviour
       - name: Create Pull Request
