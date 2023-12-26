@@ -66,9 +66,11 @@ jobs:
           body="${body//$'\r'/'%0D'}"
 
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "changelog<<$EOF" >> "$GITHUB_OUTPUT"
-          echo "$body" >> "$GITHUB_OUTPUT"
-          echo "$EOF" >> "$GITHUB_OUTPUT"
+          echo {
+            "changelog<<$EOF";
+            "$body";
+            "$EOF";
+          } >> "$GITHUB_OUTPUT"
           echo "$body"
 
       # behaviour if PR already exists: https://github.com/marketplace/actions/create-pull-request#action-behaviour
