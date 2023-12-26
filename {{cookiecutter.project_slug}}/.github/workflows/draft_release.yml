@@ -33,10 +33,10 @@ jobs:
           body="${body//$'\r'/'%0D'}"
 
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo {
-            "changelog<<$EOF"
-            "$body"
-            "$EOF";
+          {
+            echo changelog<<"$EOF";
+            echo "$body";
+            echo "$EOF";
           } >> "$GITHUB_OUTPUT"
           echo "$body"
 
