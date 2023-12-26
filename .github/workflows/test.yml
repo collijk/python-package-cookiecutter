@@ -21,7 +21,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.11
       - run: python -m pip install pre-commit
       - run: pre-commit run --all-files
 
@@ -32,9 +32,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.11
       - run: python -m pip install cookiecutter pytest pyyaml
-      - run: pytest
+      - run: pytest tests/
 
   lint-generated-project:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: 3.9
+          python-version: 3.11
       - run: python -m pip install cookiecutter poetry
       - run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash) 1.6.21
       - name: Generate project
