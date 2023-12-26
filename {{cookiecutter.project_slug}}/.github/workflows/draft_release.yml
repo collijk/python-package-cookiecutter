@@ -34,8 +34,8 @@ jobs:
 
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo {
-            "changelog<<$EOF";
-            "$body";
+            "changelog<<$EOF"
+            "$body"
             "$EOF";
           } >> "$GITHUB_OUTPUT"
           echo "$body"
