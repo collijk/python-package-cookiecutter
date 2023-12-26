@@ -17,15 +17,12 @@ jobs:
       - name: Gather outdated dependencies
         id: check_for_outdated_dependencies
         run: |
-          body=$(poetry show -o -n)
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo {
-            "changelog<<$EOF";
-            "$body";
-            "$EOF";
-          } >> "$GITHUB_OUTPUT"
+          body=$(poetry show -o -n)
+          echo "body<<$EOF" >> "$GITHUB_OUTPUT"
+          echo "$body" >> "$GITHUB_OUTPUT"
+          echo "$EOF" >> "$GITHUB_OUTPUT"
           echo "$body"
-
 
       - name: Format PR message
         if: ${{ steps.check_for_outdated_dependencies.outputs.body != 0 }}
@@ -42,15 +39,11 @@ jobs:
           body="${body//'%'/'%25'}"
           body="${body//$'\n'/'%0A'}"
           body="${body//$'\r'/'%0D'}"
-
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo {
-            "changelog<<$EOF";
-            "$body";
-            "$EOF";
-          } >> "$GITHUB_OUTPUT"
+          echo "body<<$EOF" >> "$GITHUB_OUTPUT"
+          echo "$body" >> "$GITHUB_OUTPUT"
+          echo "$EOF" >> "$GITHUB_OUTPUT"
           echo "$body"
-
 
       - name: Update outdated packages
         if: ${{ steps.check_for_outdated_dependencies.outputs.body != 0 }}
