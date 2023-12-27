@@ -1,6 +1,7 @@
 # Python Package Cookiecutter
 
-A [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/README.html) (project template) for rapidly developing new open source Python packages. Best practices with all the modern bells and whistles included.
+A [cookiecutter](https://cookiecutter.readthedocs.io/en/latest/README.html) (project template) for rapidly developing new open source Python
+packages. Best practices with all the modern bells and whistles included.
 
 ## Features
 
@@ -60,8 +61,8 @@ Create a new project:
 cruft create https://github.com/collijk/python-package-cookiecutter
 ```
 
-The CLI interface will ask some basic questions, such the name of the project, and then generate all the goodies
- automatically.
+The CLI interface will ask some basic questions, such the name of the project, and then
+generate all the goodies automatically.
 
 After that you can make it a proper git repo:
 
@@ -72,8 +73,8 @@ git add .
 git commit -m "Initial project structure from Python Package cookiecutter"
 ```
 
-We update this cookiecutter template regularly to keep it up-to-date with the best practices of the Python world. You
- can get the updates into your project with:
+We update this cookiecutter template regularly to keep it up-to-date with the best
+practices of the Python world. You can get the updates into your project with:
 
 ```sh
 cruft update
@@ -83,22 +84,27 @@ cruft update
 
 #### `PYPI_TOKEN`
 
-Required for publishing the package to [PyPI](https://pypi.org/). You can generate a token by logging into PyPI and
- navigating to _Add API token_ in your [account settings](https://pypi.org/manage/account/).
+Required for publishing the package to [PyPI](https://pypi.org/). You can generate a token by logging
+into PyPI and navigating to _Add API token_ in your [account settings](https://pypi.org/manage/account/).
 
-#### `AUTO_UPDATE_GITHUB_TOKEN`
+#### `GITHUB_TOKEN`
 
-This cookiecutter template comes with an auto update feature if the project was created using cruft.
-A GitHub action automatically checks for updates and creates a pull request.
+This cookiecutter template needs repository access for the following operations:
 
-Generate [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-and use it as the value for `AUTO_UPDATE_GITHUB_TOKEN` secret. When creating the access token, the following
- permissions have to be granted
+* Automatically updating the infrastructure files when the template is updated (via [cruft](https://cruft.github.io/cruft/))
+* Automatically updating the dependencies.
+* Automatically updating the changelog and version for draft releases.
+
+To enable these features, you need to create a
+[personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+and use it as the value for `GITHUB_TOKEN` secret. When creating the access token, the
+following permissions have to be granted:
 
 * repo
 * workflow
 
 ### After the first release
 
-The first release will create `gh-pages` branch which will contain the static files for the documentation. Enable GitHub
- Pages in the _Pages_ section of the repository settings.
+The first release will create `gh-pages` branch which will contain the static files for
+the documentation. Enable GitHub Pages in the _Pages_ section of the repository
+settings.
