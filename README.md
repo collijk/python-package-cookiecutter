@@ -87,7 +87,7 @@ cruft update
 Required for publishing the package to [PyPI](https://pypi.org/). You can generate a token by logging
 into PyPI and navigating to _Add API token_ in your [account settings](https://pypi.org/manage/account/).
 
-#### `GITHUB_TOKEN`
+#### `GH_TOKEN`
 
 This cookiecutter template needs repository access for the following operations:
 
@@ -97,7 +97,7 @@ This cookiecutter template needs repository access for the following operations:
 
 To enable these features, you need to create a
 [personal access token](https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token)
-and use it as the value for `GITHUB_TOKEN` secret. When creating the access token, the
+and use it as the value for `GH_TOKEN` secret. When creating the access token, the
 following permissions have to be granted:
 
 * repo
