@@ -19,9 +19,17 @@ repos:
         entry: poetry run autoflake -r -i --remove-all-unused-imports --remove-unused-variables
         language: system
         types: [ python ]
+<<<<<<< Updated upstream
       - id: isort
         name: isort
         entry: poetry run isort
+=======
+      - id: ruff
+        name: ruff
+        # Add --fix, in case you want it to autofix when this hook runs
+        entry: poetry run ruff check --force-exclude --fix
+        require_serial: true
+>>>>>>> Stashed changes
         language: system
         types: [python]
       - id: black
