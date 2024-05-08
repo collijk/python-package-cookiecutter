@@ -90,7 +90,7 @@ classmethod-decorators = [
 ]
 
 [tool.ruff.lint.flake8-tidy-imports]
-ban-relative-imports = true
+ban-relative-imports = "all"
 
 [tool.pytest.ini_options]
 addopts = """\
