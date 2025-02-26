@@ -29,8 +29,9 @@ requires-poetry = ">=2.0"
 [tool.poetry.dependencies]
 python = ">=3.12, <4.0"
 
-# We keep the dev dependencies here so they're still installed by default with `poetry install`
-# but we don't want to install them in production.
+# We keep the dev dependencies here instead of in the project optional dependencies
+# so they're still installed by default with `poetry install`.
+# They won't be installed or shipped with the package. 
 [tool.poetry.group.dev.dependencies]
 # Things we want to put a lower bound on
 mypy = "^1.15.0"
