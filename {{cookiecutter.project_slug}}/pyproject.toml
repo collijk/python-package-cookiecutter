@@ -1,57 +1,55 @@
-[tool.poetry]
+[project]
 name = "{{ cookiecutter.project_slug }}"
 version = "0.0.1"
 description = "{{ cookiecutter.project_short_description }}"
-authors = [
-    "{{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>",
-]
 license = "BSD-3-Clause"
 readme = "README.md"
-
-documentation = "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }}"
-homepage = "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }}"
-repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
-
-classifiers = [
-  "Development Status :: 4 - Beta",
-  "Intended Audience :: Developers",
-  "Operating System :: OS Independent",
-  "Programming Language :: Python",
-  "Programming Language :: Python :: 3",
-  "Topic :: Software Development :: Libraries :: Python Modules",
-  "Typing :: Typed",
+authors = [
+    {name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}"},
+]
+requires-python = ">=3.12"
+dependencies = [
+    "click",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "mkdocstrings[python]",
+    "mkdocs-material",
+    "mkdocs-table-reader-plugin",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-section-index",
+    "mypy",
+    "pre-commit",
+    "pymdown-extensions",
+    "pytest",
+    "pytest-github-actions-annotate-failures",
+    "pytest-cov",
+    "python-kacl",
+    "ruff"
+]
+
+[project.urls]
+homepage = "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }}"
+repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+documentation = "https://{{ cookiecutter.github_username }}.github.io/{{ cookiecutter.project_slug }}"
+
+[project.scripts]
+my-cli = "{{ cookiecutter.package_name }}.cli:main"
+
+[tool.poetry]
 packages = [
     { include = "{{ cookiecutter.package_name }}", from = "src" }
 ]
+requires-poetry = ">=2.0"
 
 [tool.poetry.dependencies]
 python = ">=3.12, <4.0"
-click = "*"
-
-[tool.poetry.group.dev.dependencies]
-mkdocstrings = {version = "*", extras = ["python"]}
-mkdocs-material = "*"
-mkdocs-table-reader-plugin = "*"
-mkdocs-gen-files = "*"
-mkdocs-literate-nav = "*"
-mkdocs-section-index = "*"
-mypy = "*"
-pre-commit = "*"
-pymdown-extensions = "*"
-pytest = "*"
-pytest-github-actions-annotate-failures = "*"
-pytest-cov = "*"
-python-kacl = "*"
-ruff = "*"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=2.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-my-cli = "{{ cookiecutter.package_name }}.cli:main"
 
 [tool.ruff]
 target-version = "py312" # The lowest supported version
